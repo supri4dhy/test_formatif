@@ -15,120 +15,176 @@
             background-color: #f3f4f6;
         }
         .header {
-            background-color: #4a5568;
+            background-color: #4a5568; /* Tailwind gray-700 */
             color: white;
             padding: 1rem;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .main-content {
+
+        /* Kontainer untuk navigasi mata kuliah horizontal */
+        .subject-navigation-bar {
+            background-color: #e5e7eb; /* Tailwind gray-200 */
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #d1d5db; /* Tailwind gray-300 */
+        }
+        #subjectButtons { /* Kontainer untuk tombol mata kuliah */
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto; /* Memungkinkan scroll horizontal jika banyak mata kuliah */
+            justify-content: center; /* Pusatkan tombol jika tidak memenuhi lebar */
+            align-items: center;
+            -webkit-overflow-scrolling: touch; /* Scroll halus di iOS */
+            scrollbar-width: thin; /* Scrollbar tipis untuk Firefox */
+            scrollbar-color: #9ca3af #e5e7eb; /* Warna scrollbar untuk Firefox */
+        }
+        #subjectButtons::-webkit-scrollbar { /* Styling scrollbar untuk Chrome/Safari/Edge */
+            height: 8px;
+        }
+        #subjectButtons::-webkit-scrollbar-track {
+            background: #e5e7eb; /* Tailwind gray-200 */
+            border-radius: 4px;
+        }
+        #subjectButtons::-webkit-scrollbar-thumb {
+            background: #9ca3af; /* Tailwind gray-400 */
+            border-radius: 4px;
+        }
+        #subjectButtons::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; /* Tailwind gray-500 */
+        }
+        #subjectButtons button { /* Tombol mata kuliah */
+            background-color: #3b82f6; /* Tailwind blue-500 */
+            color: white;
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem; /* Margin horizontal antar tombol */
+            border: none;
+            border-radius: 0.375rem; /* rounded-md */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            flex-shrink: 0; /* Mencegah tombol menyusut */
+            font-size: 0.875rem; /* text-sm */
+        }
+        #subjectButtons button:hover {
+            background-color: #2563eb; /* Tailwind blue-600 */
+        }
+        #subjectButtons button.active {
+            background-color: #1d4ed8; /* Tailwind blue-700 */
+            font-weight: bold;
+        }
+
+        /* Wrapper untuk sidebar (sesi kuis) dan area konten utama */
+        .content-wrapper {
             display: flex;
             flex-grow: 1;
         }
-        .sidebar {
+        .sidebar { /* Sekarang hanya untuk daftar sesi kuis */
             width: 250px;
-            background-color: #e2e8f0;
+            background-color: #e2e8f0; /* Tailwind slate-200 */
             padding: 1rem;
             overflow-y: auto;
-            border-right: 1px solid #cbd5e0;
+            border-right: 1px solid #cbd5e0; /* Tailwind slate-300 */
         }
-        .sidebar h2 {
-            font-size: 1.25rem;
+        .sidebar h2#quizListHeader {
+            font-size: 1.125rem; /* text-lg */
             font-weight: 600;
-            margin-bottom: 1rem;
-            color: #2d3748;
+            margin-bottom: 0.75rem;
+            color: #1f2937; /* Tailwind gray-800 */
+            text-align: center;
         }
-        #quizButtons button {
-            display: block;
-            width: 100%;
-            padding: 0.75rem 1rem;
+        #quizButtons { /* Kontainer untuk tombol sesi kuis */
+            display: flex;
+            flex-direction: column; /* Tombol sesi kuis vertikal di desktop */
+        }
+        #quizButtons button { /* Tombol sesi kuis */
+            background-color: #60a5fa; /* Tailwind blue-400 */
+            color: white;
+            padding: 0.625rem 1rem; /* py-2.5 px-4 */
             margin-bottom: 0.5rem;
             text-align: left;
-            background-color: #4299e1;
-            color: white;
             border: none;
-            border-radius: 0.375rem;
+            border-radius: 0.375rem; /* rounded-md */
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-size: 0.875rem; /* text-sm */
         }
         #quizButtons button:hover {
-            background-color: #3182ce;
+            background-color: #3b82f6; /* Tailwind blue-500 */
         }
         #quizButtons button.active {
-            background-color: #2b6cb0;
+            background-color: #2563eb; /* Tailwind blue-600 */
             font-weight: bold;
         }
+
         .content-area {
             flex-grow: 1;
             padding: 1rem;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #f9fafb; /* Tailwind gray-50 */
         }
         #quizFrame {
             width: 95%;
             max-width: 1000px;
-            height: 80vh;
-            border: 1px solid #cbd5e0;
-            border-radius: 0.375rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            height: 80vh; /* Sesuaikan jika perlu */
+            border: 1px solid #d1d5db; /* Tailwind gray-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
         }
         .footer {
-            background-color: #4a5568;
+            background-color: #4a5568; /* Tailwind gray-700 */
             color: white;
             text-align: center;
-            padding: 0.5rem;
-            font-size: 0.875rem;
+            padding: 0.75rem;
+            font-size: 0.875rem; /* text-sm */
         }
         #fullscreenMessage {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0,0,0,0.8);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            z-index: 10000;
-            text-align: center;
-            display: none; /* Initially hidden */
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background-color: rgba(0,0,0,0.8); color: white; padding: 10px 20px;
+            border-radius: 5px; z-index: 10000; text-align: center; display: none;
         }
 
+        /* Responsive adjustments for mobile */
         @media (max-width: 768px) {
-            .main-content {
+            .subject-navigation-bar {
+                padding: 0.5rem;
+            }
+            #subjectButtons button {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+            }
+            .content-wrapper {
                 flex-direction: column;
             }
             .sidebar {
                 width: 100%;
-                max-height: none;
+                max-height: none; /* Hapus batasan tinggi agar bisa scroll jika banyak sesi */
                 border-right: none;
-                border-bottom: 1px solid #cbd5e0;
-                overflow-y: visible;
+                border-bottom: 1px solid #cbd5e0; /* Tailwind slate-300 */
+                padding: 0.75rem;
             }
-            .sidebar h2 {
-                text-align: center;
+            .sidebar h2#quizListHeader {
+                font-size: 1rem; /* text-base */
+                margin-bottom: 0.5rem;
             }
-            #quizButtons {
-                display: flex;
+            #quizButtons { /* Tombol sesi kuis horizontal di mobile */
                 flex-direction: row;
                 overflow-x: auto;
-                padding: 0.5rem 0;
-                justify-content: flex-start;
-                -webkit-overflow-scrolling: touch;
+                padding-bottom: 0.5rem; /* Padding untuk scrollbar jika muncul */
             }
             #quizButtons button {
                 width: auto;
                 flex-shrink: 0;
                 margin-right: 0.5rem;
                 margin-bottom: 0;
-                padding: 0.5rem 1rem;
                 text-align: center;
+                padding: 0.5rem 0.75rem;
             }
             #quizButtons button:last-child {
                 margin-right: 0;
             }
             #quizFrame {
-                height: 70vh;
+                height: 60vh; /* Sesuaikan tinggi iframe di mobile */
             }
         }
     </style>
@@ -138,10 +194,15 @@
         <h1 class="text-2xl font-bold">Kumpulan Kuis Interaktif</h1>
     </header>
 
-    <div class="main-content">
+    <nav class="subject-navigation-bar">
+        <div id="subjectButtons">
+            </div>
+    </nav>
+
+    <div class="content-wrapper">
         <aside class="sidebar">
-            <h2>Pilih Kuis:</h2>
-            <div id="quizButtons"></div>
+            <h2 id="quizListHeader">Pilih Mata Kuliah</h2> <div id="quizButtons">
+                </div>
         </aside>
 
         <main class="content-area">
@@ -158,32 +219,58 @@
     <div id="fullscreenMessage"></div>
 
     <script>
-        const quizLinks = [
-            { name: "Kuis Sesi 1", url: "https://quizizz.com/embed/quiz/67b695e143636b3fc219c961" },
-            { name: "Kuis Sesi 2", url: "https://quizizz.com/embed/quiz/67b6a4118c14277155ebc4b2" },
-            { name: "Kuis Sesi 3", url: "https://quizizz.com/embed/quiz/67b6ddcb52d3acc7dff9735d" },
-            { name: "Kuis Sesi 4", url: "https://quizizz.com/embed/quiz/67b71698f05c5e4c840ebd22" },
-            { name: "Kuis Sesi 5", url: "https://quizizz.com/embed/quiz/67b71891cb36af8202092939" },
-            { name: "Kuis Sesi 6", url: "https://quizizz.com/embed/quiz/67b71f6b655bfa2112eeab81" },
-            { name: "Kuis Sesi 7", url: "https://quizizz.com/embed/quiz/67b71fb1e54d96480e93b161" },
-            { name: "Kuis Sesi 8", url: "https://quizizz.com/embed/quiz/67b71c81b91c5d469756d909" },
-            { name: "Kuis Sesi 9", url: "https://quizizz.com/embed/quiz/67b71df46a6ee63582832a0e" }
-        ];
+        // --- DATA KUIS ---
+        const quizData = {
+            "Basis Data": [
+                { name: "Kuis Sesi 1", url: "https://quizizz.com/embed/quiz/67b695e143636b3fc219c961" },
+				{ name: "Kuis Sesi 2", url: "https://quizizz.com/embed/quiz/67b6a4118c14277155ebc4b2" },
+				{ name: "Kuis Sesi 3", url: "https://quizizz.com/embed/quiz/67b6ddcb52d3acc7dff9735d" },
+				{ name: "Kuis Sesi 4", url: "https://quizizz.com/embed/quiz/67b71698f05c5e4c840ebd22" },
+				{ name: "Kuis Sesi 5", url: "https://quizizz.com/embed/quiz/67b71891cb36af8202092939" },
+				{ name: "Kuis Sesi 6", url: "https://quizizz.com/embed/quiz/67b71f6b655bfa2112eeab81" },
+				{ name: "Kuis Sesi 7", url: "https://quizizz.com/embed/quiz/67b71fb1e54d96480e93b161" },
+				{ name: "Kuis Sesi 8", url: "https://quizizz.com/embed/quiz/67b71c81b91c5d469756d909" },
+				{ name: "Kuis Sesi 9", url: "https://quizizz.com/embed/quiz/67b71df46a6ee63582832a0e" }
+			],
+            "Jaringan Komputer": [
+                { name: "Kuis Sesi 01", url: "https://quizizz.com/embed/quiz/67b7223b44f42a1d44c2a94c" },
+				{ name: "Kuis Sesi 02", url: "https://quizizz.com/embed/quiz/67b7234985d27eccfa10ad33" },
+				{ name: "Kuis Sesi 03", url: "https://quizizz.com/embed/quiz/67b7244a051fdf619e2fb538" },
+				{ name: "Kuis Sesi 04", url: "https://quizizz.com/embed/quiz/67b865da8b510414adc31d46" },
+				{ name: "Kuis Sesi 05", url: "https://quizizz.com/embed/quiz/67b867bdc92e9d3a5715a63e" },
+				{ name: "Kuis Sesi 06", url: "https://quizizz.com/embed/quiz/67b869e20bb465d4b27b59b8" },
+				{ name: "Kuis Sesi 07", url: "https://quizizz.com/embed/quiz/67b86e9a0e7cc1d48f4aa46c" },
+				{ name: "Kuis Sesi 08", url: "https://quizizz.com/embed/quiz/67b8701a609461673fc88ae1" },
+				{ name: "Kuis Sesi 09", url: "https://quizizz.com/embed/quiz/67b871a3f768af808d9eba7e" }
+            ],
+            "Interaksi Manusia dan Komputer": [
+                { name: "Kuis Modul 01", url: "https://quizizz.com/embed/quiz/67b91ed5f5e634fe2596aa25" },
+				{ name: "Kuis Modul 02", url: "https://quizizz.com/embed/quiz/67b920216551411cbb9a52a4" },
+				{ name: "Kuis Modul 03", url: "https://quizizz.com/embed/quiz/67b9213658c06b6b00decfdf" },
+				{ name: "Kuis Modul 04", url: "https://quizizz.com/embed/quiz/67b9227fbfd17a4ee8920726" },
+				{ name: "Kuis Modul 05", url: "https://quizizz.com/embed/quiz/67b923688d02a53388699188" },
+				{ name: "Kuis Modul 06", url: "https://quizizz.com/embed/quiz/67b925dc27c4d47ea7f2458d" },
+				{ name: "Kuis Modul 07", url: "https://quizizz.com/embed/quiz/67b9c0b79b608ce3f35a3b67" },
+				{ name: "Kuis Modul 08", url: "https://quizizz.com/embed/quiz/67b9c1ff5820efc48a2aac45" },
+				{ name: "Kuis Modul 09", url: "https://quizizz.com/embed/quiz/67b9c3eca1045fd1529cdbec" }
+            ],
+            "Sejarah": [] // Contoh mata kuliah tanpa kuis
+        };
+        // -------------------------
 
         const quizFrame = document.getElementById('quizFrame');
+        const subjectButtonsContainer = document.getElementById('subjectButtons');
         const quizButtonsContainer = document.getElementById('quizButtons');
-        let currentActiveButton = null;
         const fullscreenMessageDiv = document.getElementById('fullscreenMessage');
+        const quizListHeader = document.getElementById('quizListHeader');
 
-        function isMobileDevice() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
+        let currentActiveSubjectButton = null;
+        let currentActiveQuizButton = null;
 
-        function isLandscape() {
-            return window.matchMedia("(orientation: landscape)").matches;
-        }
-
-        function showTemporaryMessage(message, duration = 5000) {
+        function isMobileDevice() { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); }
+        function isLandscape() { return window.matchMedia("(orientation: landscape)").matches; }
+        
+        function showTemporaryMessage(message, duration = 3000) {
             if (fullscreenMessageDiv) {
                 fullscreenMessageDiv.textContent = message;
                 fullscreenMessageDiv.style.display = 'block';
@@ -194,126 +281,106 @@
         }
 
         async function enterFullscreenAndSuggestPortrait() {
-            // Hanya coba jika iframe memiliki src (kuis dimuat)
             if (!quizFrame.src || quizFrame.src === 'about:blank') return;
-
             if (quizFrame.requestFullscreen) {
                 try {
                     await quizFrame.requestFullscreen();
-                    console.log("Entered fullscreen.");
-                    // Setelah berhasil masuk fullscreen, coba kunci orientasi
                     if (screen.orientation && screen.orientation.lock) {
-                        try {
-                            await screen.orientation.lock('portrait-primary');
-                            console.log("Orientation locked to portrait-primary.");
-                        } catch (lockError) {
-                            console.warn("Could not lock orientation to portrait-primary:", lockError.message);
-                            try {
-                                // Fallback ke 'portrait' umum jika 'portrait-primary' gagal
-                                await screen.orientation.lock('portrait');
-                                console.log("Orientation locked to portrait.");
-                            } catch (lockError2) {
-                                console.warn("Could not lock orientation to portrait:", lockError2.message);
-                                showTemporaryMessage("Tidak dapat mengunci ke mode potret.", 3000);
-                            }
-                        }
-                    } else {
-                        console.warn("Screen Orientation API (lock) not supported or not available in this context.");
-                        showTemporaryMessage("Mode potret mungkin tidak didukung.", 3000);
+                        try { await screen.orientation.lock('portrait-primary'); }
+                        catch (e) { try { await screen.orientation.lock('portrait'); } catch (e2) { showTemporaryMessage("Gagal kunci orientasi potret."); } }
                     }
-                } catch (fullscreenError) {
-                    console.warn("Could not enter fullscreen:", fullscreenError.message);
-                    showTemporaryMessage("Ketuk layar untuk mode layar penuh & potret jika otomatis gagal.", 5000);
-                }
+                } catch (e) { showTemporaryMessage("Gagal masuk mode layar penuh."); }
+            } else { showTemporaryMessage("Layar penuh tidak didukung."); }
+        }
+
+        function setActiveButton(buttonElement, type) {
+            const activeList = type === 'subject' ? currentActiveSubjectButton : currentActiveQuizButton;
+            const setActiveVar = (btn) => {
+                if (type === 'subject') currentActiveSubjectButton = btn;
+                else currentActiveQuizButton = btn;
+            };
+
+            if (activeList) activeList.classList.remove('active');
+            if (buttonElement) {
+                buttonElement.classList.add('active');
+                setActiveVar(buttonElement);
             } else {
-                console.warn("Fullscreen API not supported on quizFrame.");
-                showTemporaryMessage("Mode layar penuh tidak didukung browser ini.", 3000);
+                setActiveVar(null);
             }
         }
 
         async function loadQuiz(url, buttonElement) {
-            if (quizFrame) {
-                quizFrame.src = url;
+            quizFrame.src = url;
+            setActiveButton(buttonElement, 'quiz');
+            if (isMobileDevice() && isLandscape() && !document.fullscreenElement) {
+                setTimeout(enterFullscreenAndSuggestPortrait, 100);
             }
-            if (currentActiveButton) {
-                currentActiveButton.classList.remove('active');
-            }
-            if (buttonElement) {
-                buttonElement.classList.add('active');
-                currentActiveButton = buttonElement;
-            }
-
-            // Coba fullscreen dan portrait jika di mobile landscape setelah kuis dipilih
-            // Menunggu sebentar agar iframe mulai memuat bisa membantu
-            setTimeout(() => {
-                if (isMobileDevice() && isLandscape()) {
-                    if (!document.fullscreenElement) { // Hanya jika belum fullscreen
-                         enterFullscreenAndSuggestPortrait();
-                    }
-                }
-            }, 100); // Penundaan singkat
         }
 
-        quizLinks.forEach((quiz, index) => {
-            const button = document.createElement('button');
-            button.textContent = quiz.name;
-            button.onclick = () => loadQuiz(quiz.url, button);
-            quizButtonsContainer.appendChild(button);
+        function populateQuizzes(subjectName, subjectButtonElement) {
+            quizButtonsContainer.innerHTML = ''; 
+            setActiveButton(subjectButtonElement, 'subject');
+            
+            quizListHeader.textContent = `Sesi Kuis: ${subjectName}`;
 
-            if (index === 0) {
-                // Jangan panggil loadQuiz di sini secara langsung untuk menghindari auto-fullscreen saat load halaman awal.
-                // Biarkan pengguna memilih kuis pertama kali.
-                // Atau, jika ingin kuis pertama langsung aktif tapi tanpa fullscreen:
-                quizFrame.src = quiz.url;
-                button.classList.add('active');
-                currentActiveButton = button;
+            const quizzes = quizData[subjectName] || [];
+            if (quizzes.length === 0) {
+                 quizButtonsContainer.innerHTML = '<p class="text-sm text-gray-600 p-2 text-center">Tidak ada kuis untuk mata kuliah ini.</p>';
+                 quizFrame.src = ''; 
+                 setActiveButton(null, 'quiz'); 
+                 return;
+            }
+
+            quizzes.forEach((quiz, index) => {
+                const button = document.createElement('button');
+                button.textContent = quiz.name;
+                button.onclick = () => loadQuiz(quiz.url, button);
+                quizButtonsContainer.appendChild(button);
+                if (index === 0) loadQuiz(quiz.url, button);
+            });
+        }
+
+        function populateSubjects() {
+            subjectButtonsContainer.innerHTML = ''; 
+            const subjects = Object.keys(quizData);
+
+            if (subjects.length === 0) {
+                subjectButtonsContainer.innerHTML = '<p class="text-sm text-gray-600 p-2">Tidak ada mata kuliah.</p>';
+                quizListHeader.textContent = "Tidak Ada Kuis";
+                quizButtonsContainer.innerHTML = '';
+                quizFrame.src = '';
+                return;
+            }
+
+            subjects.forEach((subject, index) => {
+                const button = document.createElement('button');
+                button.textContent = subject;
+                // button.classList.add('subject-button'); // Kelas ini tidak lagi diperlukan karena styling langsung ke #subjectButtons button
+                button.onclick = () => populateQuizzes(subject, button);
+                subjectButtonsContainer.appendChild(button);
+                if (index === 0) populateQuizzes(subject, button);
+            });
+        }
+
+        populateSubjects(); 
+
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement && screen.orientation && screen.orientation.unlock) {
+                try { screen.orientation.unlock(); } catch (e) { console.warn("Gagal membuka kunci orientasi."); }
             }
         });
 
         let orientationChangeTimeout;
-        function handleOrientationAndResize() {
+        window.addEventListener('orientationchange', () => {
             clearTimeout(orientationChangeTimeout);
             orientationChangeTimeout = setTimeout(() => {
-                const quizIsLoaded = quizFrame.src && quizLinks.some(quiz => quiz.url === quizFrame.src);
-                if (quizIsLoaded && isMobileDevice() && isLandscape()) {
-                    if (!document.fullscreenElement) { // Hanya jika belum fullscreen
-                        // Pertimbangkan untuk tidak otomatis memanggil ini saat rotasi,
-                        // karena bisa jadi mengganggu. Mungkin lebih baik jika hanya saat loadQuiz.
-                        // Untuk saat ini, saya akan menonaktifkan panggilan otomatis saat rotasi
-                        // dan membiarkannya hanya saat loadQuiz.
-                        // enterFullscreenAndSuggestPortrait();
-                        console.log("Device rotated to landscape with quiz loaded. Fullscreen/portrait can be triggered via quiz selection.");
-                    }
+                if (quizFrame.src && quizFrame.src !== 'about:blank' && isMobileDevice() && isLandscape() && !document.fullscreenElement) {
+                    // Pertimbangkan untuk tidak otomatis memanggil fullscreen di sini untuk menghindari gangguan
+                    // showTemporaryMessage("Rotasi ke lanskap. Pilih kuis untuk layar penuh.");
                 }
-            }, 250); // Debounce
-        }
-
-        window.addEventListener('orientationchange', handleOrientationAndResize);
-        window.addEventListener('resize', handleOrientationAndResize); // Resize juga bisa menandakan perubahan orientasi
-
-        document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement) {
-                console.log("Exited fullscreen.");
-                if (screen.orientation && screen.orientation.unlock) {
-                    try {
-                        screen.orientation.unlock();
-                        console.log("Screen orientation unlocked.");
-                    } catch (unlockError) {
-                        console.warn("Could not unlock screen orientation:", unlockError.message);
-                    }
-                }
-            }
+            }, 250); 
         });
-
-        // Jika kuis pertama tidak dimuat otomatis oleh loadQuiz, pastikan iframe tidak kosong
-        if (!quizFrame.src && quizLinks.length > 0) {
-             quizFrame.src = quizLinks[0].url;
-             const firstButton = quizButtonsContainer.querySelector('button');
-             if(firstButton) {
-                firstButton.classList.add('active');
-                currentActiveButton = firstButton;
-             }
-        }
+        // window.addEventListener('resize', handleOrientationAndResize); // Resize juga bisa, tapi orientationchange lebih spesifik
 
     </script>
 </body>
