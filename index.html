@@ -324,7 +324,7 @@
             quizButtonsContainer.innerHTML = ''; 
             setActiveButton(subjectButtonElement, 'subject');
             
-            quizListHeader.textContent = `Sesi Kuis: ${subjectName}`;
+            quizListHeader.textContent = 'Mata Kuliah :' ${subjectName}`;
 
             const quizzes = quizData[subjectName] || [];
             if (quizzes.length === 0) {
