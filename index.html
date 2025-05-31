@@ -194,7 +194,10 @@
                 padding: 0.75rem;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             }
-            .sidebar h2#quizListHeader { font-size: 1.1rem; margin-bottom: 0.5rem; }
+            .sidebar h2#quizListHeader {
+                font-size: 1.1rem; /* Ukuran font disesuaikan untuk mobile */
+                margin-bottom: 0.5rem;
+            }
             #quizButtons {
                 flex-direction: row;
                 overflow-x: auto;
@@ -366,7 +369,14 @@
             quizButtonsContainer.innerHTML = ''; 
             setActiveButton(subjectButtonElement, 'subject');
             
-            quizListHeader.innerHTML = `Mata Kuliah : <br> <span class="font-normal">${subjectName}</span>`;
+            if (isMobileDevice()) {
+                // Pada mobile, hilangkan <br> dan pastikan teks cukup besar
+                quizListHeader.innerHTML = `MK: <span class="font-normal">${subjectName}</span>`;
+                // Anda juga bisa menyesuaikan ukuran font #quizListHeader khusus mobile di CSS jika perlu
+                // quizListHeader.style.fontSize = "1rem"; // Contoh jika ingin override via JS
+            } else {
+                quizListHeader.innerHTML = `Mata Kuliah : <br> <span class="font-normal">${subjectName}</span>`;
+            }
 
             const quizzes = quizData[subjectName] || [];
             if (quizzes.length === 0) {
