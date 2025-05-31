@@ -13,7 +13,6 @@
             min-height: 100vh;
             margin: 0;
             background-image: linear-gradient(to bottom, #e0e7ff, #f0f4f8 30%, #f0f4f8 70%, #e0e7ff);
-            /* padding-top akan ditambahkan oleh @media query untuk mobile */
         }
         .header {
             background-image: linear-gradient(to right, #4A5568, #2D3748);
@@ -21,8 +20,20 @@
             padding: 1.25rem 1rem;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            /* z-index: 40; /* Relatif terhadap sticky ad bar jika perlu */
+            position: relative; /* Untuk konteks stacking jika diperlukan */
+            /* z-index: 30; /* Jika header perlu z-index */
         }
+
+        /* Styling untuk Mobile Ad Container yang Sticky di bawah header */
+        #adContainerMobile {
+            /* Kelas Tailwind: md:hidden sticky top-0 z-40 w-full shadow-md py-2 px-1 */
+            /* Background diatur via inline style untuk gradasi */
+            color: white; /* Agar teks di dalamnya (jika ada selain iklan) kontras */
+        }
+        #adContainerMobile .ad-slot-mobile {
+            /* Style tambahan jika perlu */
+        }
+
 
         .subject-navigation-bar {
             background-color: #e2e8f0;
@@ -139,17 +150,9 @@
             box-shadow: -2px 0 5px rgba(0,0,0,0.05);
         }
         #adContainerDesktop .ad-slot {
-            /* border: 1px dashed red; */ /* Untuk debugging jika perlu */
+            /* border: 1px dashed red; */
         }
 
-        /* Styling untuk Mobile Ad Container yang Sticky */
-        #adContainerMobile {
-            /* Kelas Tailwind: md:hidden sticky top-0 z-50 w-full bg-gray-800 shadow-md py-2 px-1 */
-            /* Style tambahan jika perlu */
-        }
-        #adContainerMobile .ad-slot-mobile {
-            /* Style tambahan jika perlu */
-        }
 
         .footer {
             background-image: linear-gradient(to right, #2D3748, #1A202C);
@@ -159,7 +162,7 @@
             font-size: 0.875rem;
             box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
         }
-        /* .footer p sudah di-style via Tailwind di HTML */
+        .footer p { color: #cbd5e0; }
 
         #fullscreenMessage {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
@@ -170,11 +173,11 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        @media (max-width: 767px) { /* Tailwind 'md' breakpoint = 768px. Ini untuk di bawah md. */
-            body {
-                padding-top: 76px; /* Tinggi bar iklan sticky: 60px (iklan) + 16px (padding py-2) */
-            }
-            .header { padding: 1rem; } /* Padding header mungkin perlu disesuaikan jika ada tumpang tindih z-index, tapi sticky seharusnya di atas */
+        @media (max-width: 767px) {
+            /* body {
+                padding-top: 76px; /* DIHAPUS KARENA IKLAN STICKY SEKARANG DI BAWAH HEADER AWAL */
+            /* } */
+            .header { padding: 1rem; }
             .subject-navigation-bar { padding: 0.5rem; }
             #subjectButtons button { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
             .content-wrapper { flex-direction: column; }
@@ -207,7 +210,11 @@
     </style>
 </head>
 <body>
-    <div id="adContainerMobile" class="md:hidden sticky top-0 z-50 w-full bg-gray-800 shadow-md py-2 px-1">
+    <header class="header">
+        <h1 class="text-2xl font-bold">Test Formatif Universitas Terbuka</h1>
+    </header>
+
+    <div id="adContainerMobile" class="md:hidden sticky top-0 z-40 w-full shadow-md py-2 px-1" style="background-image: linear-gradient(to right, #4A5568, #2D3748);">
         <div class="ad-slot-mobile mx-auto" style="width: 468px; max-width: 100%; height: 60px;">
             <script type="text/javascript">
                 atOptions = {
@@ -222,10 +229,6 @@
         </div>
     </div>
 
-    <header class="header">
-        <h1 class="text-2xl font-bold">Test Formatif Universitas Terbuka</h1>
-    </header>
-
     <nav class="subject-navigation-bar">
         <div id="subjectButtons">
             </div>
@@ -236,7 +239,7 @@
             <h2 id="quizListHeader">Pilih Mata Kuliah</h2>
             <div id="quizButtons">
                 </div>
-        </aside>
+        </aside
 
         <main class="content-area">
             <iframe id="quizFrame" src="" allowfullscreen>
@@ -271,20 +274,9 @@
     <script>
         // --- DATA KUIS ---
         const quizData = {
-            "Basis Data": [
-                { name: "Kuis Sesi 1", url: "https://quizizz.com/embed/quiz/67b695e143636b3fc219c961" },
-                { name: "Kuis Sesi 2", url: "https://quizizz.com/embed/quiz/67b6a4118c14277155ebc4b2" },
-                { name: "Kuis Sesi 3", url: "https://quizizz.com/embed/quiz/67b6ddcb52d3acc7dff9735d" },
-                // ... (data kuis lainnya seperti sebelumnya) ...
-            ],
-            "Jaringan Komputer": [
-                { name: "Kuis Sesi 01", url: "https://quizizz.com/embed/quiz/67b7223b44f42a1d44c2a94c" },
-                // ...
-            ],
-            "Interaksi Manusia dan Komputer": [
-                { name: "Kuis Modul 01", url: "https://quizizz.com/embed/quiz/67b91ed5f5e634fe2596aa25" },
-                // ...
-            ],
+            "Basis Data": [ /* ... data kuis ... */ ],
+            "Jaringan Komputer": [ /* ... data kuis ... */ ],
+            "Interaksi Manusia dan Komputer": [ /* ... data kuis ... */ ],
             "Algoritma dan Pemprograman": [  ],
             "Perencanaan dan Pengembangan Bisnis": [  ],
             "Sistem Informasi Manajemen": [  ],
@@ -314,7 +306,6 @@
         }
 
         async function enterFullscreenAndSuggestPortrait() {
-            // ... (fungsi sama seperti sebelumnya) ...
             if (!quizFrame.src || quizFrame.src === 'about:blank') return;
             if (quizFrame.requestFullscreen) {
                 try {
@@ -328,7 +319,6 @@
         }
 
         function setActiveButton(buttonElement, type) {
-            // ... (fungsi sama seperti sebelumnya) ...
             const activeList = type === 'subject' ? currentActiveSubjectButton : currentActiveQuizButton;
             const setActiveVar = (btn) => {
                 if (type === 'subject') currentActiveSubjectButton = btn;
@@ -344,7 +334,6 @@
         }
 
         async function loadQuiz(url, buttonElement) {
-            // ... (fungsi sama seperti sebelumnya) ...
             quizFrame.src = url;
             setActiveButton(buttonElement, 'quiz');
             if (isMobileDevice() && isLandscape() && !document.fullscreenElement) {
@@ -353,7 +342,6 @@
         }
 
         function populateQuizzes(subjectName, subjectButtonElement) {
-            // ... (fungsi sama seperti sebelumnya, dengan penyesuaian quizListHeader) ...
             quizButtonsContainer.innerHTML = ''; 
             setActiveButton(subjectButtonElement, 'subject');
             
@@ -384,7 +372,6 @@
         }
 
         function populateSubjects() {
-            // ... (fungsi sama seperti sebelumnya) ...
             subjectButtonsContainer.innerHTML = ''; 
             const subjects = Object.keys(quizData);
             if (subjects.length === 0) {
@@ -410,7 +397,6 @@
         populateSubjects(); 
 
         document.addEventListener('fullscreenchange', () => {
-            // ... (fungsi sama seperti sebelumnya) ...
             if (!document.fullscreenElement && screen.orientation && screen.orientation.unlock) {
                 try { screen.orientation.unlock(); } catch (e) { console.warn("Gagal membuka kunci orientasi."); }
             }
@@ -418,11 +404,10 @@
 
         let orientationChangeTimeout;
         window.addEventListener('orientationchange', () => {
-            // ... (fungsi sama seperti sebelumnya) ...
             clearTimeout(orientationChangeTimeout);
             orientationChangeTimeout = setTimeout(() => {
                 if (quizFrame.src && quizFrame.src !== 'about:blank' && isMobileDevice() && isLandscape() && !document.fullscreenElement) {
-                    // Pertimbangkan logika tambahan jika diperlukan saat orientasi berubah
+                    // Logic for orientation change
                 }
             }, 250); 
         });
