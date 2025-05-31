@@ -12,11 +12,10 @@
             flex-direction: column;
             min-height: 100vh;
             margin: 0;
-            /* background-color: #f0f4f8; */ /* Diganti gradasi */
-            background-image: linear-gradient(to bottom, #e0e7ff, #f0f4f8 30%, #f0f4f8 70%, #e0e7ff); /* Gradasi sangat halus dari lavender-ish ke blue-gray-50 */
+            background-image: linear-gradient(to bottom, #e0e7ff, #f0f4f8 30%, #f0f4f8 70%, #e0e7ff);
         }
         .header {
-            background-image: linear-gradient(to right, #4A5568, #2D3748); /* Tailwind gray-700 to gray-800 */
+            background-image: linear-gradient(to right, #4A5568, #2D3748);
             color: white;
             padding: 1.25rem 1rem;
             text-align: center;
@@ -24,9 +23,9 @@
         }
 
         .subject-navigation-bar {
-            background-color: #e2e8f0; /* Tailwind slate-200 */
+            background-color: #e2e8f0;
             padding: 0.75rem 1rem;
-            border-bottom: 1px solid #cbd5e0; /* Tailwind slate-300 */
+            border-bottom: 1px solid #cbd5e0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         #subjectButtons {
@@ -39,31 +38,21 @@
             scrollbar-width: thin;
             scrollbar-color: #a0aec0 #e2e8f0;
         }
-        #subjectButtons::-webkit-scrollbar {
-            height: 8px;
-        }
-        #subjectButtons::-webkit-scrollbar-track {
-            background: #e2e8f0;
-            border-radius: 4px;
-        }
-        #subjectButtons::-webkit-scrollbar-thumb {
-            background: #a0aec0;
-            border-radius: 4px;
-        }
-        #subjectButtons::-webkit-scrollbar-thumb:hover {
-            background: #718096;
-        }
+        #subjectButtons::-webkit-scrollbar { height: 8px; }
+        #subjectButtons::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 4px; }
+        #subjectButtons::-webkit-scrollbar-thumb { background: #a0aec0; border-radius: 4px; }
+        #subjectButtons::-webkit-scrollbar-thumb:hover { background: #718096; }
         #subjectButtons button {
             background-image: linear-gradient(to bottom, #4299e1, #3182ce);
             color: white;
             padding: 0.6rem 1.1rem;
             margin: 0 0.3rem;
             border: none;
-            border-radius: 0.5rem; /* rounded-lg */
+            border-radius: 0.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
             flex-shrink: 0;
-            font-size: 0.875rem; /* text-sm */
+            font-size: 0.875rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.08);
         }
         #subjectButtons button:hover {
@@ -85,23 +74,20 @@
         .sidebar {
             width: 260px;
             flex-shrink: 0;
-            background-color: #f7fafc; /* Tailwind gray-50 */
+            background-color: #f7fafc;
             padding: 1.25rem;
             overflow-y: auto;
-            border-right: 1px solid #e2e8f0; /* Tailwind slate-200 */
+            border-right: 1px solid #e2e8f0;
             box-shadow: 2px 0 5px rgba(0,0,0,0.05);
         }
         .sidebar h2#quizListHeader {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #2d3748; /* Tailwind gray-800 */
+            color: #2d3748;
             text-align: center;
         }
-        #quizButtons {
-            display: flex;
-            flex-direction: column;
-        }
+        #quizButtons { display: flex; flex-direction: column; }
         #quizButtons button {
             background-image: linear-gradient(to right, #63b3ed, #4299e1);
             color: white;
@@ -109,10 +95,10 @@
             margin-bottom: 0.6rem;
             text-align: left;
             border: none;
-            border-radius: 0.375rem; /* rounded-md */
+            border-radius: 0.375rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.875rem; /* text-sm */
+            font-size: 0.875rem;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         #quizButtons button:hover {
@@ -133,7 +119,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #edf2f7; /* Tailwind gray-200 - ini bisa tetap atau dihilangkan jika body gradient sudah cukup */
+            background-color: #edf2f7;
             overflow: hidden;
         }
         #quizFrame {
@@ -141,26 +127,29 @@
             max-width: 900px;
             height: 80vh;
             border: 1px solid #d1d5db;
-            border-radius: 0.75rem; /* rounded-xl */
+            border-radius: 0.75rem;
             box-shadow: 0 8px 16px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.08);
         }
 
+        /* Styling untuk kontainer iklan desktop */
         #adContainerDesktop {
-            flex-shrink: 0;
-            background-color: #f7fafc; /* Tailwind gray-50 */
-            box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+            flex-shrink: 0; /* Mencegah kontainer menyusut */
+            /* Lebar diatur oleh kelas Tailwind atau style inline */
+            background-color: #f7fafc; /* Warna latar belakang sama dengan sidebar */
+            box-shadow: -2px 0 5px rgba(0,0,0,0.05); /* Bayangan seperti sidebar */
         }
-        #adContainerDesktop .ad-placeholder {
-            background-color: #e2e8f0; /* Tailwind slate-200 */
-            border: 2px dashed #9ca3af;
+        #adContainerDesktop .ad-slot {
+            /* Style tambahan untuk div.ad-slot jika perlu, misal border untuk debugging */
+            /* border: 1px dashed red; */
         }
+
 
         .footer {
             background-image: linear-gradient(to right, #2D3748, #1A202C);
             color: #a0aec0;
             text-align: center;
             padding: 1rem;
-            font-size: 0.875rem; /* text-sm */
+            font-size: 0.875rem;
             box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
         }
         #adContainerMobile .ad-placeholder {
@@ -168,15 +157,13 @@
             border: 2px dashed #718096;
             color: #e2e8f0;
         }
-        .footer p {
-            color: #cbd5e0;
-        }
+        .footer p { color: #cbd5e0; }
 
         #fullscreenMessage {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             background-color: rgba(45, 55, 72, 0.9);
             color: white; padding: 12px 24px;
-            border-radius: 8px; /* rounded-lg */
+            border-radius: 8px;
             z-index: 10000; text-align: center; display: none;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
@@ -194,10 +181,7 @@
                 padding: 0.75rem;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             }
-            .sidebar h2#quizListHeader {
-                font-size: 1.1rem; /* Ukuran font disesuaikan untuk mobile */
-                margin-bottom: 0.5rem;
-            }
+            .sidebar h2#quizListHeader { font-size: 1.1rem; margin-bottom: 0.5rem; }
             #quizButtons {
                 flex-direction: row;
                 overflow-x: auto;
@@ -213,10 +197,7 @@
             }
             #quizButtons button:last-child { margin-right: 0; }
             .content-area { padding: 1rem; }
-            #quizFrame {
-                height: 60vh;
-                border-radius: 0.5rem; /* rounded-lg */
-            }
+            #quizFrame { height: 60vh; border-radius: 0.5rem; }
         }
     </style>
 </head>
@@ -243,18 +224,27 @@
             </iframe>
         </main>
 
-        <aside id="adContainerDesktop" class="hidden md:flex md:flex-col md:w-60 lg:w-72 xl:w-80 p-4 border-l border-gray-300">
-            <h3 class="text-md font-semibold mb-3 text-slate-700 text-center">Advertisement</h3>
-            <div class="ad-placeholder flex-grow rounded flex items-center justify-center text-slate-500 p-2">
-                <p class="text-center text-sm">Desktop Ad Space <br>(e.g., 200x400)</p>
+        <aside id="adContainerDesktop" class="hidden md:flex md:flex-col p-4 border-l border-gray-300 md:w-56"> <h3 class="text-md font-semibold mb-3 text-slate-700 text-center">Advertisement</h3>
+            
+            <div class="ad-slot mx-auto" style="width: 160px; height: 600px;">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '2b7cbbe5874e136fdaa778a1160d6227',
+                        'format' : 'iframe',
+                        'height' : 600,
+                        'width' : 160,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/2b7cbbe5874e136fdaa778a1160d6227/invoke.js"></script>
             </div>
-            <p class="text-xs text-slate-400 mt-2 text-center">Ads help keep this service free.</p>
-        </aside>
+        
+            <p class="text-xs text-slate-400 mt-auto pt-3 text-center">Ads help keep this service free.</p> </aside>
     </div>
 
     <footer class="footer">
         <div id="adContainerMobile" class="md:hidden py-2 px-1">
-            <div class="ad-placeholder rounded h-16 flex items-center justify-center p-2">
+            <div class="ad-placeholder rounded h-16 flex items-center justify-center text-white p-2">
                 <p class="text-center text-sm">Mobile Ad Space (e.g., 320x50)</p>
             </div>
         </div>
@@ -299,7 +289,7 @@
                 { name: "Kuis Modul 08", url: "https://quizizz.com/embed/quiz/67b9c1ff5820efc48a2aac45" },
                 { name: "Kuis Modul 09", url: "https://quizizz.com/embed/quiz/67b9c3eca1045fd1529cdbec" }
             ],
-            "Algoritma dan Pemprograman": [  ], // Contoh mata kuliah tanpa kuis
+            "Algoritma dan Pemprograman": [  ],
             "Perencanaan dan Pengembangan Bisnis": [  ],
             "Sistem Informasi Manajemen": [  ],
             "Belajar di Era Digital": [  ]
@@ -322,9 +312,7 @@
             if (fullscreenMessageDiv) {
                 fullscreenMessageDiv.textContent = message;
                 fullscreenMessageDiv.style.display = 'block';
-                setTimeout(() => {
-                    fullscreenMessageDiv.style.display = 'none';
-                }, duration);
+                setTimeout(() => { fullscreenMessageDiv.style.display = 'none'; }, duration);
             }
         }
 
@@ -347,7 +335,6 @@
                 if (type === 'subject') currentActiveSubjectButton = btn;
                 else currentActiveQuizButton = btn;
             };
-
             if (activeList) activeList.classList.remove('active');
             if (buttonElement) {
                 buttonElement.classList.add('active');
@@ -370,10 +357,7 @@
             setActiveButton(subjectButtonElement, 'subject');
             
             if (isMobileDevice()) {
-                // Pada mobile, hilangkan <br> dan pastikan teks cukup besar
                 quizListHeader.innerHTML = `MK: <span class="font-normal">${subjectName}</span>`;
-                // Anda juga bisa menyesuaikan ukuran font #quizListHeader khusus mobile di CSS jika perlu
-                // quizListHeader.style.fontSize = "1rem"; // Contoh jika ingin override via JS
             } else {
                 quizListHeader.innerHTML = `Mata Kuliah : <br> <span class="font-normal">${subjectName}</span>`;
             }
@@ -385,16 +369,13 @@
                 setActiveButton(null, 'quiz'); 
                 return;
             }
-
             let firstQuizButton = null;
             quizzes.forEach((quiz, index) => {
                 const button = document.createElement('button');
                 button.textContent = quiz.name;
                 button.onclick = () => loadQuiz(quiz.url, button);
                 quizButtonsContainer.appendChild(button);
-                if (index === 0) {
-                    firstQuizButton = button;
-                }
+                if (index === 0) firstQuizButton = button;
             });
             if (firstQuizButton && quizzes.length > 0) {
                  loadQuiz(quizzes[0].url, firstQuizButton);
@@ -404,7 +385,6 @@
         function populateSubjects() {
             subjectButtonsContainer.innerHTML = ''; 
             const subjects = Object.keys(quizData);
-
             if (subjects.length === 0) {
                 subjectButtonsContainer.innerHTML = '<p class="text-sm text-gray-600 p-2">Tidak ada mata kuliah.</p>';
                 quizListHeader.textContent = "Tidak Ada Kuis";
@@ -412,18 +392,14 @@
                 quizFrame.src = '';
                 return;
             }
-            
             let firstSubjectButton = null;
             subjects.forEach((subject, index) => {
                 const button = document.createElement('button');
                 button.textContent = subject;
                 button.onclick = () => populateQuizzes(subject, button);
                 subjectButtonsContainer.appendChild(button);
-                if (index === 0) {
-                    firstSubjectButton = button;
-                }
+                if (index === 0) firstSubjectButton = button;
             });
-
             if (firstSubjectButton && subjects.length > 0) {
                 populateQuizzes(subjects[0], firstSubjectButton);
             }
@@ -442,7 +418,7 @@
             clearTimeout(orientationChangeTimeout);
             orientationChangeTimeout = setTimeout(() => {
                 if (quizFrame.src && quizFrame.src !== 'about:blank' && isMobileDevice() && isLandscape() && !document.fullscreenElement) {
-                    // showTemporaryMessage("Rotasi ke lanskap. Pilih kuis untuk layar penuh jika belum.");
+                    // Pertimbangkan logika tambahan jika diperlukan saat orientasi berubah
                 }
             }, 250); 
         });
