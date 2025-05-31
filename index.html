@@ -12,165 +12,193 @@
             flex-direction: column;
             min-height: 100vh;
             margin: 0;
-            background-color: #f3f4f6;
+            /* background-color: #f0f4f8; */ /* Diganti gradasi */
+            background-image: linear-gradient(to bottom, #e0e7ff, #f0f4f8 30%, #f0f4f8 70%, #e0e7ff); /* Gradasi sangat halus dari lavender-ish ke blue-gray-50 */
         }
         .header {
-            background-color: #4a5568; /* Tailwind gray-700 */
+            background-image: linear-gradient(to right, #4A5568, #2D3748); /* Tailwind gray-700 to gray-800 */
             color: white;
-            padding: 1rem;
+            padding: 1.25rem 1rem;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
-        /* Kontainer untuk navigasi mata kuliah horizontal */
         .subject-navigation-bar {
-            background-color: #e5e7eb; /* Tailwind gray-200 */
+            background-color: #e2e8f0; /* Tailwind slate-200 */
             padding: 0.75rem 1rem;
-            border-bottom: 1px solid #d1d5db; /* Tailwind gray-300 */
+            border-bottom: 1px solid #cbd5e0; /* Tailwind slate-300 */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        #subjectButtons { /* Kontainer untuk tombol mata kuliah */
+        #subjectButtons {
             display: flex;
             flex-direction: row;
-            overflow-x: auto; /* Memungkinkan scroll horizontal jika banyak mata kuliah */
-            justify-content: center; /* Pusatkan tombol jika tidak memenuhi lebar */
+            overflow-x: auto;
+            justify-content: center;
             align-items: center;
-            -webkit-overflow-scrolling: touch; /* Scroll halus di iOS */
-            scrollbar-width: thin; /* Scrollbar tipis untuk Firefox */
-            scrollbar-color: #9ca3af #e5e7eb; /* Warna scrollbar untuk Firefox */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #a0aec0 #e2e8f0;
         }
-        #subjectButtons::-webkit-scrollbar { /* Styling scrollbar untuk Chrome/Safari/Edge */
+        #subjectButtons::-webkit-scrollbar {
             height: 8px;
         }
         #subjectButtons::-webkit-scrollbar-track {
-            background: #e5e7eb; /* Tailwind gray-200 */
+            background: #e2e8f0;
             border-radius: 4px;
         }
         #subjectButtons::-webkit-scrollbar-thumb {
-            background: #9ca3af; /* Tailwind gray-400 */
+            background: #a0aec0;
             border-radius: 4px;
         }
         #subjectButtons::-webkit-scrollbar-thumb:hover {
-            background: #6b7280; /* Tailwind gray-500 */
+            background: #718096;
         }
-        #subjectButtons button { /* Tombol mata kuliah */
-            background-color: #3b82f6; /* Tailwind blue-500 */
+        #subjectButtons button {
+            background-image: linear-gradient(to bottom, #4299e1, #3182ce);
             color: white;
-            padding: 0.5rem 1rem;
-            margin: 0 0.25rem; /* Margin horizontal antar tombol */
+            padding: 0.6rem 1.1rem;
+            margin: 0 0.3rem;
             border: none;
-            border-radius: 0.375rem; /* rounded-md */
+            border-radius: 0.5rem; /* rounded-lg */
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            flex-shrink: 0; /* Mencegah tombol menyusut */
+            transition: all 0.3s ease;
+            flex-shrink: 0;
             font-size: 0.875rem; /* text-sm */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.08);
         }
         #subjectButtons button:hover {
-            background-color: #2563eb; /* Tailwind blue-600 */
+            background-image: linear-gradient(to bottom, #3182ce, #2b6cb0);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.1);
         }
         #subjectButtons button.active {
-            background-color: #1d4ed8; /* Tailwind blue-700 */
+            background-image: linear-gradient(to bottom, #2b6cb0, #2c5282);
             font-weight: bold;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.05);
+            transform: translateY(0);
         }
 
-        /* Wrapper untuk sidebar (sesi kuis) dan area konten utama */
         .content-wrapper {
             display: flex;
             flex-grow: 1;
         }
-        .sidebar { /* Sekarang hanya untuk daftar sesi kuis */
-            width: 250px;
-            background-color: #e2e8f0; /* Tailwind slate-200 */
-            padding: 1rem;
+        .sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            background-color: #f7fafc; /* Tailwind gray-50 */
+            padding: 1.25rem;
             overflow-y: auto;
-            border-right: 1px solid #cbd5e0; /* Tailwind slate-300 */
+            border-right: 1px solid #e2e8f0; /* Tailwind slate-200 */
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
         }
         .sidebar h2#quizListHeader {
-            font-size: 1.125rem; /* text-lg */
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #1f2937; /* Tailwind gray-800 */
+            margin-bottom: 1rem;
+            color: #2d3748; /* Tailwind gray-800 */
             text-align: center;
         }
-        #quizButtons { /* Kontainer untuk tombol sesi kuis */
+        #quizButtons {
             display: flex;
-            flex-direction: column; /* Tombol sesi kuis vertikal di desktop */
+            flex-direction: column;
         }
-        #quizButtons button { /* Tombol sesi kuis */
-            background-color: #60a5fa; /* Tailwind blue-400 */
+        #quizButtons button {
+            background-image: linear-gradient(to right, #63b3ed, #4299e1);
             color: white;
-            padding: 0.625rem 1rem; /* py-2.5 px-4 */
-            margin-bottom: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.6rem;
             text-align: left;
             border: none;
             border-radius: 0.375rem; /* rounded-md */
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             font-size: 0.875rem; /* text-sm */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         #quizButtons button:hover {
-            background-color: #3b82f6; /* Tailwind blue-500 */
+            background-image: linear-gradient(to right, #4299e1, #3182ce);
+            transform: translateX(3px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
         #quizButtons button.active {
-            background-color: #2563eb; /* Tailwind blue-600 */
+            background-image: linear-gradient(to right, #3182ce, #2b6cb0);
             font-weight: bold;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+            transform: translateX(0);
         }
 
         .content-area {
             flex-grow: 1;
-            padding: 1rem;
+            padding: 1.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f9fafb; /* Tailwind gray-50 */
+            background-color: #edf2f7; /* Tailwind gray-200 - ini bisa tetap atau dihilangkan jika body gradient sudah cukup */
+            overflow: hidden;
         }
         #quizFrame {
-            width: 95%;
+            width: 100%;
             max-width: 900px;
-            height: 80vh; /* Sesuaikan jika perlu */
-            border: 1px solid #d1d5db; /* Tailwind gray-300 */
-            border-radius: 0.5rem; /* rounded-lg */
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
-        }
-        .footer {
-            background-color: #4a5568; /* Tailwind gray-700 */
-            color: white;
-            text-align: center;
-            padding: 0.75rem;
-            font-size: 0.875rem; /* text-sm */
-        }
-        #fullscreenMessage {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background-color: rgba(0,0,0,0.8); color: white; padding: 10px 20px;
-            border-radius: 5px; z-index: 10000; text-align: center; display: none;
+            height: 80vh;
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.08);
         }
 
-        /* Responsive adjustments for mobile */
-        @media (max-width: 768px) {
-            .subject-navigation-bar {
-                padding: 0.5rem;
-            }
-            #subjectButtons button {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.8rem;
-            }
-            .content-wrapper {
-                flex-direction: column;
-            }
+        #adContainerDesktop {
+            flex-shrink: 0;
+            background-color: #f7fafc; /* Tailwind gray-50 */
+            box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+        }
+        #adContainerDesktop .ad-placeholder {
+            background-color: #e2e8f0; /* Tailwind slate-200 */
+            border: 2px dashed #9ca3af;
+        }
+
+        .footer {
+            background-image: linear-gradient(to right, #2D3748, #1A202C);
+            color: #a0aec0;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.875rem; /* text-sm */
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+        }
+        #adContainerMobile .ad-placeholder {
+            background-color: #4a5568;
+            border: 2px dashed #718096;
+            color: #e2e8f0;
+        }
+        .footer p {
+            color: #cbd5e0;
+        }
+
+        #fullscreenMessage {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background-color: rgba(45, 55, 72, 0.9);
+            color: white; padding: 12px 24px;
+            border-radius: 8px; /* rounded-lg */
+            z-index: 10000; text-align: center; display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 767px) {
+            .header { padding: 1rem; }
+            .subject-navigation-bar { padding: 0.5rem; }
+            #subjectButtons button { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
+            .content-wrapper { flex-direction: column; }
             .sidebar {
                 width: 100%;
-                max-height: none; /* Hapus batasan tinggi agar bisa scroll jika banyak sesi */
+                max-height: none;
                 border-right: none;
-                border-bottom: 1px solid #cbd5e0; /* Tailwind slate-300 */
+                border-bottom: 1px solid #cbd5e0;
                 padding: 0.75rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             }
-            .sidebar h2#quizListHeader {
-                font-size: 1rem; /* text-base */
-                margin-bottom: 0.5rem;
-            }
-            #quizButtons { /* Tombol sesi kuis horizontal di mobile */
+            .sidebar h2#quizListHeader { font-size: 1.1rem; margin-bottom: 0.5rem; }
+            #quizButtons {
                 flex-direction: row;
                 overflow-x: auto;
-                padding-bottom: 0.5rem; /* Padding untuk scrollbar jika muncul */
+                padding-bottom: 0.5rem;
             }
             #quizButtons button {
                 width: auto;
@@ -178,13 +206,13 @@
                 margin-right: 0.5rem;
                 margin-bottom: 0;
                 text-align: center;
-                padding: 0.5rem 0.75rem;
+                padding: 0.6rem 0.8rem;
             }
-            #quizButtons button:last-child {
-                margin-right: 0;
-            }
+            #quizButtons button:last-child { margin-right: 0; }
+            .content-area { padding: 1rem; }
             #quizFrame {
-                height: 60vh; /* Sesuaikan tinggi iframe di mobile */
+                height: 60vh;
+                border-radius: 0.5rem; /* rounded-lg */
             }
         }
     </style>
@@ -201,7 +229,8 @@
 
     <div class="content-wrapper">
         <aside class="sidebar">
-            <h2 id="quizListHeader">Pilih Mata Kuliah</h2> <div id="quizButtons">
+            <h2 id="quizListHeader">Pilih Mata Kuliah</h2>
+            <div id="quizButtons">
                 </div>
         </aside>
 
@@ -210,10 +239,23 @@
                 Browser Anda tidak mendukung iframe.
             </iframe>
         </main>
+
+        <aside id="adContainerDesktop" class="hidden md:flex md:flex-col md:w-60 lg:w-72 xl:w-80 p-4 border-l border-gray-300">
+            <h3 class="text-md font-semibold mb-3 text-slate-700 text-center">Advertisement</h3>
+            <div class="ad-placeholder flex-grow rounded flex items-center justify-center text-slate-500 p-2">
+                <p class="text-center text-sm">Desktop Ad Space <br>(e.g., 200x400)</p>
+            </div>
+            <p class="text-xs text-slate-400 mt-2 text-center">Ads help keep this service free.</p>
+        </aside>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2025 Penampil Kuis. Dibuat untuk kemudahan Anda.</p>
+        <div id="adContainerMobile" class="md:hidden py-2 px-1">
+            <div class="ad-placeholder rounded h-16 flex items-center justify-center p-2">
+                <p class="text-center text-sm">Mobile Ad Space (e.g., 320x50)</p>
+            </div>
+        </div>
+        <p class="pt-1">&copy; 2025 Penampil Kuis. Dibuat untuk kemudahan Anda.</p>
     </footer>
 
     <div id="fullscreenMessage"></div>
@@ -223,36 +265,36 @@
         const quizData = {
             "Basis Data": [
                 { name: "Kuis Sesi 1", url: "https://quizizz.com/embed/quiz/67b695e143636b3fc219c961" },
-				{ name: "Kuis Sesi 2", url: "https://quizizz.com/embed/quiz/67b6a4118c14277155ebc4b2" },
-				{ name: "Kuis Sesi 3", url: "https://quizizz.com/embed/quiz/67b6ddcb52d3acc7dff9735d" },
-				{ name: "Kuis Sesi 4", url: "https://quizizz.com/embed/quiz/67b71698f05c5e4c840ebd22" },
-				{ name: "Kuis Sesi 5", url: "https://quizizz.com/embed/quiz/67b71891cb36af8202092939" },
-				{ name: "Kuis Sesi 6", url: "https://quizizz.com/embed/quiz/67b71f6b655bfa2112eeab81" },
-				{ name: "Kuis Sesi 7", url: "https://quizizz.com/embed/quiz/67b71fb1e54d96480e93b161" },
-				{ name: "Kuis Sesi 8", url: "https://quizizz.com/embed/quiz/67b71c81b91c5d469756d909" },
-				{ name: "Kuis Sesi 9", url: "https://quizizz.com/embed/quiz/67b71df46a6ee63582832a0e" }
-			],
+                { name: "Kuis Sesi 2", url: "https://quizizz.com/embed/quiz/67b6a4118c14277155ebc4b2" },
+                { name: "Kuis Sesi 3", url: "https://quizizz.com/embed/quiz/67b6ddcb52d3acc7dff9735d" },
+                { name: "Kuis Sesi 4", url: "https://quizizz.com/embed/quiz/67b71698f05c5e4c840ebd22" },
+                { name: "Kuis Sesi 5", url: "https://quizizz.com/embed/quiz/67b71891cb36af8202092939" },
+                { name: "Kuis Sesi 6", url: "https://quizizz.com/embed/quiz/67b71f6b655bfa2112eeab81" },
+                { name: "Kuis Sesi 7", url: "https://quizizz.com/embed/quiz/67b71fb1e54d96480e93b161" },
+                { name: "Kuis Sesi 8", url: "https://quizizz.com/embed/quiz/67b71c81b91c5d469756d909" },
+                { name: "Kuis Sesi 9", url: "https://quizizz.com/embed/quiz/67b71df46a6ee63582832a0e" }
+            ],
             "Jaringan Komputer": [
                 { name: "Kuis Sesi 01", url: "https://quizizz.com/embed/quiz/67b7223b44f42a1d44c2a94c" },
-				{ name: "Kuis Sesi 02", url: "https://quizizz.com/embed/quiz/67b7234985d27eccfa10ad33" },
-				{ name: "Kuis Sesi 03", url: "https://quizizz.com/embed/quiz/67b7244a051fdf619e2fb538" },
-				{ name: "Kuis Sesi 04", url: "https://quizizz.com/embed/quiz/67b865da8b510414adc31d46" },
-				{ name: "Kuis Sesi 05", url: "https://quizizz.com/embed/quiz/67b867bdc92e9d3a5715a63e" },
-				{ name: "Kuis Sesi 06", url: "https://quizizz.com/embed/quiz/67b869e20bb465d4b27b59b8" },
-				{ name: "Kuis Sesi 07", url: "https://quizizz.com/embed/quiz/67b86e9a0e7cc1d48f4aa46c" },
-				{ name: "Kuis Sesi 08", url: "https://quizizz.com/embed/quiz/67b8701a609461673fc88ae1" },
-				{ name: "Kuis Sesi 09", url: "https://quizizz.com/embed/quiz/67b871a3f768af808d9eba7e" }
+                { name: "Kuis Sesi 02", url: "https://quizizz.com/embed/quiz/67b7234985d27eccfa10ad33" },
+                { name: "Kuis Sesi 03", url: "https://quizizz.com/embed/quiz/67b7244a051fdf619e2fb538" },
+                { name: "Kuis Sesi 04", url: "https://quizizz.com/embed/quiz/67b865da8b510414adc31d46" },
+                { name: "Kuis Sesi 05", url: "https://quizizz.com/embed/quiz/67b867bdc92e9d3a5715a63e" },
+                { name: "Kuis Sesi 06", url: "https://quizizz.com/embed/quiz/67b869e20bb465d4b27b59b8" },
+                { name: "Kuis Sesi 07", url: "https://quizizz.com/embed/quiz/67b86e9a0e7cc1d48f4aa46c" },
+                { name: "Kuis Sesi 08", url: "https://quizizz.com/embed/quiz/67b8701a609461673fc88ae1" },
+                { name: "Kuis Sesi 09", url: "https://quizizz.com/embed/quiz/67b871a3f768af808d9eba7e" }
             ],
             "Interaksi Manusia dan Komputer": [
                 { name: "Kuis Modul 01", url: "https://quizizz.com/embed/quiz/67b91ed5f5e634fe2596aa25" },
-				{ name: "Kuis Modul 02", url: "https://quizizz.com/embed/quiz/67b920216551411cbb9a52a4" },
-				{ name: "Kuis Modul 03", url: "https://quizizz.com/embed/quiz/67b9213658c06b6b00decfdf" },
-				{ name: "Kuis Modul 04", url: "https://quizizz.com/embed/quiz/67b9227fbfd17a4ee8920726" },
-				{ name: "Kuis Modul 05", url: "https://quizizz.com/embed/quiz/67b923688d02a53388699188" },
-				{ name: "Kuis Modul 06", url: "https://quizizz.com/embed/quiz/67b925dc27c4d47ea7f2458d" },
-				{ name: "Kuis Modul 07", url: "https://quizizz.com/embed/quiz/67b9c0b79b608ce3f35a3b67" },
-				{ name: "Kuis Modul 08", url: "https://quizizz.com/embed/quiz/67b9c1ff5820efc48a2aac45" },
-				{ name: "Kuis Modul 09", url: "https://quizizz.com/embed/quiz/67b9c3eca1045fd1529cdbec" }
+                { name: "Kuis Modul 02", url: "https://quizizz.com/embed/quiz/67b920216551411cbb9a52a4" },
+                { name: "Kuis Modul 03", url: "https://quizizz.com/embed/quiz/67b9213658c06b6b00decfdf" },
+                { name: "Kuis Modul 04", url: "https://quizizz.com/embed/quiz/67b9227fbfd17a4ee8920726" },
+                { name: "Kuis Modul 05", url: "https://quizizz.com/embed/quiz/67b923688d02a53388699188" },
+                { name: "Kuis Modul 06", url: "https://quizizz.com/embed/quiz/67b925dc27c4d47ea7f2458d" },
+                { name: "Kuis Modul 07", url: "https://quizizz.com/embed/quiz/67b9c0b79b608ce3f35a3b67" },
+                { name: "Kuis Modul 08", url: "https://quizizz.com/embed/quiz/67b9c1ff5820efc48a2aac45" },
+                { name: "Kuis Modul 09", url: "https://quizizz.com/embed/quiz/67b9c3eca1045fd1529cdbec" }
             ],
             "Algoritma dan Pemprograman": [  ], // Contoh mata kuliah tanpa kuis
             "Perencanaan dan Pengembangan Bisnis": [  ],
@@ -316,7 +358,7 @@
             quizFrame.src = url;
             setActiveButton(buttonElement, 'quiz');
             if (isMobileDevice() && isLandscape() && !document.fullscreenElement) {
-                setTimeout(enterFullscreenAndSuggestPortrait, 100);
+                setTimeout(enterFullscreenAndSuggestPortrait, 100); 
             }
         }
 
@@ -324,23 +366,29 @@
             quizButtonsContainer.innerHTML = ''; 
             setActiveButton(subjectButtonElement, 'subject');
             
-            quizListHeader.innerHTML = `Mata Kuliah : <br> ${subjectName}`;
+            quizListHeader.innerHTML = `Mata Kuliah : <br> <span class="font-normal">${subjectName}</span>`;
 
             const quizzes = quizData[subjectName] || [];
             if (quizzes.length === 0) {
-                 quizButtonsContainer.innerHTML = '<p class="text-sm text-gray-600 p-2 text-center">Kuis dalam tahap Pengembangan.</p>';
-                 quizFrame.src = ''; 
-                 setActiveButton(null, 'quiz'); 
-                 return;
+                quizButtonsContainer.innerHTML = '<p class="text-sm text-gray-600 p-2 text-center">Kuis dalam tahap Pengembangan.</p>';
+                quizFrame.src = ''; 
+                setActiveButton(null, 'quiz'); 
+                return;
             }
 
+            let firstQuizButton = null;
             quizzes.forEach((quiz, index) => {
                 const button = document.createElement('button');
                 button.textContent = quiz.name;
                 button.onclick = () => loadQuiz(quiz.url, button);
                 quizButtonsContainer.appendChild(button);
-                if (index === 0) loadQuiz(quiz.url, button);
+                if (index === 0) {
+                    firstQuizButton = button;
+                }
             });
+            if (firstQuizButton && quizzes.length > 0) {
+                 loadQuiz(quizzes[0].url, firstQuizButton);
+            }
         }
 
         function populateSubjects() {
@@ -354,15 +402,21 @@
                 quizFrame.src = '';
                 return;
             }
-
+            
+            let firstSubjectButton = null;
             subjects.forEach((subject, index) => {
                 const button = document.createElement('button');
                 button.textContent = subject;
-                // button.classList.add('subject-button'); // Kelas ini tidak lagi diperlukan karena styling langsung ke #subjectButtons button
                 button.onclick = () => populateQuizzes(subject, button);
                 subjectButtonsContainer.appendChild(button);
-                if (index === 0) populateQuizzes(subject, button);
+                if (index === 0) {
+                    firstSubjectButton = button;
+                }
             });
+
+            if (firstSubjectButton && subjects.length > 0) {
+                populateQuizzes(subjects[0], firstSubjectButton);
+            }
         }
 
         populateSubjects(); 
@@ -378,13 +432,10 @@
             clearTimeout(orientationChangeTimeout);
             orientationChangeTimeout = setTimeout(() => {
                 if (quizFrame.src && quizFrame.src !== 'about:blank' && isMobileDevice() && isLandscape() && !document.fullscreenElement) {
-                    // Pertimbangkan untuk tidak otomatis memanggil fullscreen di sini untuk menghindari gangguan
-                    // showTemporaryMessage("Rotasi ke lanskap. Pilih kuis untuk layar penuh.");
+                    // showTemporaryMessage("Rotasi ke lanskap. Pilih kuis untuk layar penuh jika belum.");
                 }
             }, 250); 
         });
-        // window.addEventListener('resize', handleOrientationAndResize); // Resize juga bisa, tapi orientationchange lebih spesifik
-
     </script>
 </body>
 </html>
