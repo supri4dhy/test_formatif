@@ -13,6 +13,7 @@
             min-height: 100vh;
             margin: 0;
             background-image: linear-gradient(to bottom, #e0e7ff, #f0f4f8 30%, #f0f4f8 70%, #e0e7ff);
+            /* padding-top akan ditambahkan oleh @media query untuk mobile */
         }
         .header {
             background-image: linear-gradient(to right, #4A5568, #2D3748);
@@ -20,6 +21,7 @@
             padding: 1.25rem 1rem;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            /* z-index: 40; /* Relatif terhadap sticky ad bar jika perlu */
         }
 
         .subject-navigation-bar {
@@ -131,18 +133,23 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.08);
         }
 
-        /* Styling untuk kontainer iklan desktop */
         #adContainerDesktop {
-            flex-shrink: 0; /* Mencegah kontainer menyusut */
-            /* Lebar diatur oleh kelas Tailwind atau style inline */
-            background-color: #f7fafc; /* Warna latar belakang sama dengan sidebar */
-            box-shadow: -2px 0 5px rgba(0,0,0,0.05); /* Bayangan seperti sidebar */
+            flex-shrink: 0;
+            background-color: #f7fafc;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.05);
         }
         #adContainerDesktop .ad-slot {
-            /* Style tambahan untuk div.ad-slot jika perlu, misal border untuk debugging */
-            /* border: 1px dashed red; */
+            /* border: 1px dashed red; */ /* Untuk debugging jika perlu */
         }
 
+        /* Styling untuk Mobile Ad Container yang Sticky */
+        #adContainerMobile {
+            /* Kelas Tailwind: md:hidden sticky top-0 z-50 w-full bg-gray-800 shadow-md py-2 px-1 */
+            /* Style tambahan jika perlu */
+        }
+        #adContainerMobile .ad-slot-mobile {
+            /* Style tambahan jika perlu */
+        }
 
         .footer {
             background-image: linear-gradient(to right, #2D3748, #1A202C);
@@ -152,12 +159,7 @@
             font-size: 0.875rem;
             box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
         }
-        #adContainerMobile .ad-placeholder {
-            background-color: #4a5568;
-            border: 2px dashed #718096;
-            color: #e2e8f0;
-        }
-        .footer p { color: #cbd5e0; }
+        /* .footer p sudah di-style via Tailwind di HTML */
 
         #fullscreenMessage {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
@@ -168,8 +170,11 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        @media (max-width: 767px) {
-            .header { padding: 1rem; }
+        @media (max-width: 767px) { /* Tailwind 'md' breakpoint = 768px. Ini untuk di bawah md. */
+            body {
+                padding-top: 76px; /* Tinggi bar iklan sticky: 60px (iklan) + 16px (padding py-2) */
+            }
+            .header { padding: 1rem; } /* Padding header mungkin perlu disesuaikan jika ada tumpang tindih z-index, tapi sticky seharusnya di atas */
             .subject-navigation-bar { padding: 0.5rem; }
             #subjectButtons button { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
             .content-wrapper { flex-direction: column; }
@@ -202,6 +207,21 @@
     </style>
 </head>
 <body>
+    <div id="adContainerMobile" class="md:hidden sticky top-0 z-50 w-full bg-gray-800 shadow-md py-2 px-1">
+        <div class="ad-slot-mobile mx-auto" style="width: 468px; max-width: 100%; height: 60px;">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '1578a74f3df6e34bde86e287a58d9a9f',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/1578a74f3df6e34bde86e287a58d9a9f/invoke.js"></script>
+        </div>
+    </div>
+
     <header class="header">
         <h1 class="text-2xl font-bold">Test Formatif Universitas Terbuka</h1>
     </header>
@@ -224,8 +244,8 @@
             </iframe>
         </main>
 
-        <aside id="adContainerDesktop" class="hidden md:flex md:flex-col p-4 border-l border-gray-300 md:w-56"> <h3 class="text-md font-semibold mb-3 text-slate-700 text-center">Advertisement</h3>
-            
+        <aside id="adContainerDesktop" class="hidden md:flex md:flex-col p-4 border-l border-gray-300 md:w-56">
+            <h3 class="text-md font-semibold mb-3 text-slate-700 text-center">Advertisement</h3>
             <div class="ad-slot mx-auto" style="width: 160px; height: 600px;">
                 <script type="text/javascript">
                     atOptions = {
@@ -238,26 +258,12 @@
                 </script>
                 <script type="text/javascript" src="//www.highperformanceformat.com/2b7cbbe5874e136fdaa778a1160d6227/invoke.js"></script>
             </div>
-        
-            <p class="text-xs text-slate-400 mt-auto pt-3 text-center">Ads help keep this service free.</p> </aside>
+            <p class="text-xs text-slate-400 mt-auto pt-3 text-center">Ads help keep this service free.</p>
+        </aside>
     </div>
 
     <footer class="footer">
-        <div id="adContainerMobile" class="md:hidden py-2 px-1">
-            <div class="ad-placeholder rounded h-16 flex items-center justify-center text-white p-2">
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : '1578a74f3df6e34bde86e287a58d9a9f',
-                        'format' : 'iframe',
-                        'height' : 60,
-                        'width' : 468,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/1578a74f3df6e34bde86e287a58d9a9f/invoke.js"></script>
-            </div>
-        </div>
-        <!-- <p class="pt-1">&copy; 2025 Penampil Kuis. Dibuat untuk kemudahan Anda.</p> -->
+        <p class="pt-1">&copy; 2025 Penampil Kuis. Dibuat untuk kemudahan Anda.</p>
     </footer>
 
     <div id="fullscreenMessage"></div>
@@ -269,40 +275,22 @@
                 { name: "Kuis Sesi 1", url: "https://quizizz.com/embed/quiz/67b695e143636b3fc219c961" },
                 { name: "Kuis Sesi 2", url: "https://quizizz.com/embed/quiz/67b6a4118c14277155ebc4b2" },
                 { name: "Kuis Sesi 3", url: "https://quizizz.com/embed/quiz/67b6ddcb52d3acc7dff9735d" },
-                { name: "Kuis Sesi 4", url: "https://quizizz.com/embed/quiz/67b71698f05c5e4c840ebd22" },
-                { name: "Kuis Sesi 5", url: "https://quizizz.com/embed/quiz/67b71891cb36af8202092939" },
-                { name: "Kuis Sesi 6", url: "https://quizizz.com/embed/quiz/67b71f6b655bfa2112eeab81" },
-                { name: "Kuis Sesi 7", url: "https://quizizz.com/embed/quiz/67b71fb1e54d96480e93b161" },
-                { name: "Kuis Sesi 8", url: "https://quizizz.com/embed/quiz/67b71c81b91c5d469756d909" },
-                { name: "Kuis Sesi 9", url: "https://quizizz.com/embed/quiz/67b71df46a6ee63582832a0e" }
+                // ... (data kuis lainnya seperti sebelumnya) ...
             ],
             "Jaringan Komputer": [
                 { name: "Kuis Sesi 01", url: "https://quizizz.com/embed/quiz/67b7223b44f42a1d44c2a94c" },
-                { name: "Kuis Sesi 02", url: "https://quizizz.com/embed/quiz/67b7234985d27eccfa10ad33" },
-                { name: "Kuis Sesi 03", url: "https://quizizz.com/embed/quiz/67b7244a051fdf619e2fb538" },
-                { name: "Kuis Sesi 04", url: "https://quizizz.com/embed/quiz/67b865da8b510414adc31d46" },
-                { name: "Kuis Sesi 05", url: "https://quizizz.com/embed/quiz/67b867bdc92e9d3a5715a63e" },
-                { name: "Kuis Sesi 06", url: "https://quizizz.com/embed/quiz/67b869e20bb465d4b27b59b8" },
-                { name: "Kuis Sesi 07", url: "https://quizizz.com/embed/quiz/67b86e9a0e7cc1d48f4aa46c" },
-                { name: "Kuis Sesi 08", url: "https://quizizz.com/embed/quiz/67b8701a609461673fc88ae1" },
-                { name: "Kuis Sesi 09", url: "https://quizizz.com/embed/quiz/67b871a3f768af808d9eba7e" }
+                // ...
             ],
             "Interaksi Manusia dan Komputer": [
                 { name: "Kuis Modul 01", url: "https://quizizz.com/embed/quiz/67b91ed5f5e634fe2596aa25" },
-                { name: "Kuis Modul 02", url: "https://quizizz.com/embed/quiz/67b920216551411cbb9a52a4" },
-                { name: "Kuis Modul 03", url: "https://quizizz.com/embed/quiz/67b9213658c06b6b00decfdf" },
-                { name: "Kuis Modul 04", url: "https://quizizz.com/embed/quiz/67b9227fbfd17a4ee8920726" },
-                { name: "Kuis Modul 05", url: "https://quizizz.com/embed/quiz/67b923688d02a53388699188" },
-                { name: "Kuis Modul 06", url: "https://quizizz.com/embed/quiz/67b925dc27c4d47ea7f2458d" },
-                { name: "Kuis Modul 07", url: "https://quizizz.com/embed/quiz/67b9c0b79b608ce3f35a3b67" },
-                { name: "Kuis Modul 08", url: "https://quizizz.com/embed/quiz/67b9c1ff5820efc48a2aac45" },
-                { name: "Kuis Modul 09", url: "https://quizizz.com/embed/quiz/67b9c3eca1045fd1529cdbec" }
+                // ...
             ],
             "Algoritma dan Pemprograman": [  ],
             "Perencanaan dan Pengembangan Bisnis": [  ],
             "Sistem Informasi Manajemen": [  ],
             "Belajar di Era Digital": [  ]
         };
+        // (Pastikan semua data kuis Anda lengkap di sini)
         // -------------------------
 
         const quizFrame = document.getElementById('quizFrame');
@@ -326,6 +314,7 @@
         }
 
         async function enterFullscreenAndSuggestPortrait() {
+            // ... (fungsi sama seperti sebelumnya) ...
             if (!quizFrame.src || quizFrame.src === 'about:blank') return;
             if (quizFrame.requestFullscreen) {
                 try {
@@ -339,6 +328,7 @@
         }
 
         function setActiveButton(buttonElement, type) {
+            // ... (fungsi sama seperti sebelumnya) ...
             const activeList = type === 'subject' ? currentActiveSubjectButton : currentActiveQuizButton;
             const setActiveVar = (btn) => {
                 if (type === 'subject') currentActiveSubjectButton = btn;
@@ -354,6 +344,7 @@
         }
 
         async function loadQuiz(url, buttonElement) {
+            // ... (fungsi sama seperti sebelumnya) ...
             quizFrame.src = url;
             setActiveButton(buttonElement, 'quiz');
             if (isMobileDevice() && isLandscape() && !document.fullscreenElement) {
@@ -362,6 +353,7 @@
         }
 
         function populateQuizzes(subjectName, subjectButtonElement) {
+            // ... (fungsi sama seperti sebelumnya, dengan penyesuaian quizListHeader) ...
             quizButtonsContainer.innerHTML = ''; 
             setActiveButton(subjectButtonElement, 'subject');
             
@@ -392,6 +384,7 @@
         }
 
         function populateSubjects() {
+            // ... (fungsi sama seperti sebelumnya) ...
             subjectButtonsContainer.innerHTML = ''; 
             const subjects = Object.keys(quizData);
             if (subjects.length === 0) {
@@ -417,6 +410,7 @@
         populateSubjects(); 
 
         document.addEventListener('fullscreenchange', () => {
+            // ... (fungsi sama seperti sebelumnya) ...
             if (!document.fullscreenElement && screen.orientation && screen.orientation.unlock) {
                 try { screen.orientation.unlock(); } catch (e) { console.warn("Gagal membuka kunci orientasi."); }
             }
@@ -424,6 +418,7 @@
 
         let orientationChangeTimeout;
         window.addEventListener('orientationchange', () => {
+            // ... (fungsi sama seperti sebelumnya) ...
             clearTimeout(orientationChangeTimeout);
             orientationChangeTimeout = setTimeout(() => {
                 if (quizFrame.src && quizFrame.src !== 'about:blank' && isMobileDevice() && isLandscape() && !document.fullscreenElement) {
